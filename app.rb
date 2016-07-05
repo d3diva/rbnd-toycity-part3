@@ -1,5 +1,4 @@
 require_relative "lib/errors"
-require_relative "lib/customer"
 require_relative "lib/product"
 require_relative "lib/transaction"
 
