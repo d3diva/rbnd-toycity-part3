@@ -1,4 +1,4 @@
-require_relative "lib/addrecords"
+#require_relative "lib/addrecords"
 require_relative "lib/errors"
 require_relative "lib/customer"
 require_relative "lib/transaction"
@@ -29,22 +29,22 @@ firehouse = Product.find_by_title("LEGO Firehouse Headquarter")
 # Should return an array of all products with a stock greater than zero
  puts products_in_stock.include?(nanoblock) # Should return true
  puts products_in_stock.include?(firehouse) # Should return false
-puts Product.all.count
+
 # CUSTOMERS
 
- #Customer.new(name: "Walter Latimer")
- #Customer.new(name: "Julia Van Cleve")
+ Customer.new(name: "Walter Latimer")
+ Customer.new(name: "Julia Van Cleve")
 
- #puts Customer.all.count # Should return 2
+ puts Customer.all.count # Should return 2
 
- #Customer.new(name: "Walter Latimer")
+ Customer.new(name: "Walter Latimer")
 # Should return DuplicateCustomerError: 'Walter Latimer' already exists.
 
- #walter = Customer.find_by_name("Walter Latimer")
+ walter = Customer.find_by_name("Walter Latimer")
 
- #puts walter.name # Should return "Walter Latimer"
+ puts walter.name # Should return "Walter Latimer"
 
-## TRANSACTIONS
+# TRANSACTIONS
 
  #transaction = Transaction.new(walter, nanoblock)
 
@@ -54,15 +54,15 @@ puts Product.all.count
  #puts transaction.customer == walter # Should return true
 
  #puts nanoblock.stock # Should return 11
+ #puts Transaction.all.count
+ #PURCHASES
 
-# PURCHASES
+ #puts walter.purchase(nanoblock)
 
-# puts walter.purchase(nanoblock)
+ #puts Transaction.all.count # Should return 2
 
-# puts Transaction.all.count # Should return 2
+ #transaction2 = Transaction.find(2)
+ #puts transaction2.product == nanoblock # Should return true
 
-# transaction2 = Transaction.find(2)
-# puts transaction2.product == nanoblock # Should return true
-
-# walter.purchase(firehouse)
-# Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
+ #walter.purchase(firehouse)
+ #Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.

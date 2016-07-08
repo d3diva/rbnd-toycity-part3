@@ -1,5 +1,7 @@
-class Product < Addrecords
-  attr_reader :title, :price, :stock
+#require_relative "lib/errors"
+
+class Product #< Addrecords
+  attr_accessor :title, :price, :stock
 
   @@products = []
 
@@ -7,7 +9,9 @@ class Product < Addrecords
     @title = options[:title]
     @price = options[:price]
     @stock = options[:stock]
-    super(@@products, @title)
+    #title = "title"
+    #super(@@products, @title, title)
+    add_to_products
   end
 
   def self.all
@@ -15,7 +19,7 @@ class Product < Addrecords
   end
 
   def self.find_by_title(ptitle)
-    @@products.find{|x| x.title == ptitle}
+    @@products.find{|product| product.title == ptitle}
   end
 
 
@@ -29,25 +33,25 @@ class Product < Addrecords
 
   private
 
-  #def add_to_products
-  #  product_exist(@title)?  duplicate_error : add_product
-  #end
+  def add_to_products
+    product_exist(@title)?  duplicate_error : add_product
+  end
 
-  #def product_exist(title)
-  #  @@products.map {|product| product.title}.include?(title)
-  #end
+  def product_exist(title)
+    @@products.map {|product| product.title}.include?(title)
+  end
 
-  #def duplicate_error
-  #  begin
-  #    raise DuplicateProductError, "Error : '#{@title}' already exists"
-  #    rescue => error
-  #    puts error
-  #  end
-  #end
+  def duplicate_error
+    begin
+      raise DuplicateProductError, "Error : '#{@title}' already exists"
+      rescue => error
+      puts error
+    end
+  end
 
-  #def add_product
-  #  @@products << self
-  #end
+  def add_product
+    @@products << self
+  end
 
 
 

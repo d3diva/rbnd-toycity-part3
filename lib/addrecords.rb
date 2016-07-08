@@ -1,16 +1,20 @@
+#require_relative "/errors"
+
 class Addrecords
-  def initialize(records, record)
+  def initialize(records, record, title)
     @records = records
     @record = record
+    @title = title
+    puts
     add_record
   end
 
   def add_record
-    record_exist?? duplicate_error : add_record
+    record_exist?? duplicate_error : new_record
   end
 
-  def record_exist
-    @records.map {|record| record.title}.include?(@record)
+  def record_exist?
+    @records.map {|record| record.'#{@title}'}.include?(@record)
   end
 
   def duplicate_error
@@ -21,7 +25,7 @@ class Addrecords
     end
   end
 
-  def add_record
+  def new_record
     @records << self
   end
 end
