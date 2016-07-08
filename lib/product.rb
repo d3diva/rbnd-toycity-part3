@@ -31,6 +31,10 @@ class Product #< Addrecords
     @@products.select {|product| product.in_stock?}
   end
 
+  def less_stock
+    @stock -= 1
+  end
+
   private
 
   def add_to_products
@@ -52,6 +56,8 @@ class Product #< Addrecords
   def add_product
     @@products << self
   end
+
+
 
 
 

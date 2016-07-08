@@ -17,7 +17,13 @@ class Customer #< Addrecords
     @@customers.find{|customer| customer.name == cname}
   end
 
-
+  def purchase(product)
+    if product.in_stock?
+      Transaction.new(self, product)
+    else
+      out_of_stock(product.title)
+    end
+  end
 
   private
 
@@ -27,6 +33,14 @@ class Customer #< Addrecords
 
   def customer_exist(title)
     @@customers.map {|customer| customer.name}.include?(name)
+  end
+
+  def out_of_stock(title)
+    begin
+      raise OutOfStockError, "Error : '#{title}' out of stock"
+      rescue => error
+      puts error
+    end
   end
 
   def duplicate_error
