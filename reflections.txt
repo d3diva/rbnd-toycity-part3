@@ -1,0 +1,11 @@
+1. did spend lot of time than expected as there was a gap of more than a month as had to brush up a bit
+
+2. compartmentalising transaction, purchase, customer and error
+
+3. additional features
+    1. stock report
+    2. transaction report
+    3. indicates when stock below 10
+    4. cancels order
+
+4. yep theres lot to learn

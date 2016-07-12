@@ -46,7 +46,7 @@ firehouse = Product.find_by_title("LEGO Firehouse Headquarter")
 
 # TRANSACTIONS
 
- transaction = Transaction.new(walter, nanoblock)
+ transaction = Transaction.new(walter, nanoblock, purchase = "purchase")
 
  puts transaction.id # Should return 1
  puts transaction.product == nanoblock # Should return true
@@ -65,4 +65,12 @@ firehouse = Product.find_by_title("LEGO Firehouse Headquarter")
  puts transaction2.product == nanoblock # Should return true
 
  walter.purchase(firehouse)
+
+ walter.cancle(nanoblock)
  #Should return OutOfStockError: 'LEGO Firehouse Headquarter' is out of stock.
+
+ Product.stock_report
+ #stock stock
+
+ Transaction.transaction_report
+ # sales report
