@@ -11,8 +11,12 @@ class Transaction
     @id = @@id
     @@id += 1
     @tran_type = tran_type
+    add_transaction
+  end
+
+  def add_transaction
     if @tran_type == "purchase" # checks type of transaction
-      @product.in_stock?? add_transaction : product.out_of_stock
+      purchase_transaction
     else
       cancle_transaction
     end
@@ -68,7 +72,7 @@ class Transaction
 
   private
 
-  def add_transaction # add transactions if purchase
+  def purchase_transaction # add transactions if purchase
     @product.less_stock
     @@transactions << self
   end

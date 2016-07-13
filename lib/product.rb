@@ -31,8 +31,12 @@ class Product #< Addrecords
   end
 
   def less_stock # deducts stock after purchase
-    @stock -= 1
-    check_stock
+    if in_stock?
+      @stock -= 1
+      check_stock
+    else
+      out_of_stock
+    end
   end
 
   def add_stock # adds stock after product return
@@ -91,8 +95,6 @@ class Product #< Addrecords
   def less_stock_error # raise less stock error
     #  raise LessStockError, "Error : '#{@title}' stock in reserve"
   end
-
-
 
   def add_product # adds to porduct
     @@products << self
